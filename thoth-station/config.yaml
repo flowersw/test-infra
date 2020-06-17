@@ -50,7 +50,6 @@ tide:
           - "thoth-ci/build-check"
           - "thoth-ci/pytest-check"
         repos:
-          repo:
+          srcops-testing:
             required-contexts:
-              - "thoth-ci/build-check"
               - "thoth-ci/pytest-check"
