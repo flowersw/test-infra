@@ -20,58 +20,37 @@ tide:
   merge_method:
     thoth-station/srcops-testing: squash
 
-  target_url: http://34.120.197.155/tide
+  target_url: https://prow.thoth-station.dev/tide
 
   queries:
     - repos:
         - thoth-station/srcops-testing
+        - thoth-station/workflow-helpers
       labels:
-        - lgtm
         - approved
+        - lgtm
       missingLabels:
         - do-not-merge
         - do-not-merge/hold
         - do-not-merge/work-in-progress
         - do-not-merge/invalid-owners-file
+        - needs-rebase
+
+  blocker_label: tide/merge-blocker
+  squash_label: tide/merge-method-squash
+  rebase_label: tide/merge-method-rebase
+  merge_label: tide/merge-method-merge
 
   context_options:
     from-branch-protection: true
     skip-unknown-contexts: true
     orgs:
-      org:
+      thoth-station:
         required-contexts:
-          - "check-required-for-all-repos"
+          - "thoth-ci/build-check"
+          - "thoth-ci/pytest-check"
         repos:
           repo:
             required-contexts:
               - "thoth-ci/build-check"
               - "thoth-ci/pytest-check"
-
-periodics:
-  - interval: 10m
-    name: echo-test
-    decorate: true
-    spec:
-      containers:
-        - image: alpine
-          command: ["/bin/date"]
-
-postsubmits:
-  thoth-station/srcops-testing:
-    - name: test-postsubmit
-      decorate: true
-      spec:
-        containers:
-          - image: alpine
-            command: ["/bin/printenv"]
-
-presubmits:
-  thoth-station/srcops-testing:
-    - name: test-presubmit
-      decorate: true
-      always_run: true
-      skip_report: true
-      spec:
-        containers:
-          - image: alpine
-            command: ["/bin/printenv"]
