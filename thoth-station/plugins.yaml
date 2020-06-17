@@ -1,0 +1,11 @@
+plugins:
+  thoth-station/srcops-testing:
+    - approve
+    - hold
+    - lgtm
+    - lifecycle
+    - shrug
+    - size
+    - trigger
+    - wip
+    - verify-owners
