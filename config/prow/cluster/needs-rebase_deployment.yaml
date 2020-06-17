@@ -38,26 +38,17 @@ spec:
         - --dry-run=false
         - --github-endpoint=http://ghproxy
         - --github-endpoint=https://api.github.com
+        - --github-token-path=/etc/github/oauth
         ports:
           - name: http
             containerPort: 8888
         volumeMounts:
         - name: hmac
-          mountPath: /etc/webhook
-          readOnly: true
+          secret:
+            secretName: hmac-token
         - name: oauth
-          mountPath: /etc/github
-          readOnly: true
+          secret:
+            secretName: oauth-token
         - name: plugins
-          mountPath: /etc/plugins
-          readOnly: true
-      volumes:
-      - name: hmac
-        secret:
-          secretName: hmac-token
-      - name: oauth
-        secret:
-          secretName: oauth-token
-      - name: plugins
-        configMap:
-          name: plugins
+          configMap:
+            name: plugins
