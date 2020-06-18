@@ -11,11 +11,6 @@ plank:
         path_strategy: explicit
       gcs_credentials_secret: gcs-credentials
 
-github_reporter:
-  job_types_to_report:
-    - presubmit
-    - postsubmit
-
 tide:
   merge_method:
     thoth-station/srcops-testing: squash
@@ -26,9 +21,12 @@ tide:
     - repos:
         - thoth-station/srcops-testing
         - thoth-station/workflow-helpers
+        - thoth-station/si-aggregator
+        - thoth-station/si-bandit
+        - thoth-station/si-cloc
+        - thoth-station/aicoe-ci
       labels:
         - approved
-        - lgtm
       missingLabels:
         - do-not-merge
         - do-not-merge/hold
@@ -47,9 +45,13 @@ tide:
     orgs:
       thoth-station:
         required-contexts:
-          - "thoth-ci/build-check"
-          - "thoth-ci/pytest-check"
+          - thoth-ci/build-check
+          - thoth-ci/pytest-check
+          - thoth-ci/pre-commit-check
         repos:
           srcops-testing:
             required-contexts:
-              - "thoth-ci/pytest-check"
+              - thoth-ci/pytest-check
+          aicoe-ci:
+            required-contexts:
+              - thoth-ci/pre-commit-check
