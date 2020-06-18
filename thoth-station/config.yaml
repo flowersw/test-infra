@@ -24,7 +24,7 @@ tide:
         - thoth-station/si-aggregator
         - thoth-station/si-bandit
         - thoth-station/si-cloc
-        - thoth-station/aicoe-ci
+        - AICoE/aicoe-ci
       labels:
         - approved
       missingLabels:
@@ -46,7 +46,6 @@ tide:
       thoth-station:
         required-contexts:
           - thoth-ci/build-check
-          - thoth-ci/pytest-check
           - thoth-ci/pre-commit-check
         repos:
           srcops-testing:
@@ -55,3 +54,15 @@ tide:
           aicoe-ci:
             required-contexts:
               - thoth-ci/pre-commit-check
+          si-bandit:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          si-bandit:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
+          si-cloc:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
