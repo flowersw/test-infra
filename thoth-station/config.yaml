@@ -45,24 +45,21 @@ tide:
     orgs:
       thoth-station:
         required-contexts:
-          - thoth-ci/build-check
           - thoth-ci/pre-commit-check
         repos:
           srcops-testing:
             required-contexts:
+              - thoth-ci/pre-commit-check
               - thoth-ci/pytest-check
-          aicoe-ci:
+          si-bandit:
             required-contexts:
+              - thoth-ci/build-check
               - thoth-ci/pre-commit-check
           si-bandit:
             required-contexts:
-              - thoth-ci/pre-commit-check
               - thoth-ci/build-check
-          si-bandit:
-            required-contexts:
               - thoth-ci/pre-commit-check
-              - thoth-ci/build-check
           si-cloc:
             required-contexts:
-              - thoth-ci/pre-commit-check
               - thoth-ci/build-check
+              - thoth-ci/pre-commit-check
