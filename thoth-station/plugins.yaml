@@ -25,6 +25,8 @@ welcome:
 
 lgtm:
   - repos:
+      - AICoE
+      - aicoe-aiops
       - thoth-station
 
 approve:
