@@ -22,6 +22,7 @@ tide:
         - AICoE/aicoe-ci
         - thoth-station/integration-tests
         - thoth-station/metrics-exporter
+        - thoth-station/mi
         - thoth-station/si-aggregator
         - thoth-station/si-bandit
         - thoth-station/si-cloc
