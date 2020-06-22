@@ -19,19 +19,22 @@ tide:
 
   queries:
     - repos:
-        - thoth-station/srcops-testing
-        - thoth-station/workflow-helpers
+        - AICoE/aicoe-ci
+        - thoth-station/integration-tests
+        - thoth-station/metrics-exporter
         - thoth-station/si-aggregator
         - thoth-station/si-bandit
         - thoth-station/si-cloc
-        - AICoE/aicoe-ci
+        - thoth-station/srcops-testing
+        - thoth-station/thoth-application
+        - thoth-station/workflow-helpers
       labels:
         - approved
       missingLabels:
         - do-not-merge
         - do-not-merge/hold
-        - do-not-merge/work-in-progress
         - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
         - needs-rebase
 
   blocker_label: tide/merge-blocker
@@ -47,6 +50,11 @@ tide:
         required-contexts:
           - thoth-ci/pre-commit-check
         repos:
+          integration-tests:
+            required-contexts:
+              - thoth-ci/build-check
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
           srcops-testing:
             required-contexts:
               - thoth-ci/pre-commit-check
@@ -63,3 +71,22 @@ tide:
             required-contexts:
               - thoth-ci/build-check
               - thoth-ci/pre-commit-check
+
+periodics:
+  - name: integration-tests-periodic-moc
+    interval: 8h
+    labels:
+      preset-service-account: "true"
+    spec:
+      containers:
+        - image: quay.io/thoth-station/integration-tests:v0.1.1
+          imagePullPolicy: Always
+          command:
+            - "behave"
+          env:
+            - name: THOTH_MANAGEMENT_API_HOST
+              value: management.test.thoth-station.ninja
+            - name: THOTH_USER_API_HOST
+              value: test.thoth-station.ninja
+    annotations:
+      description: Periodic integration tests on MOC

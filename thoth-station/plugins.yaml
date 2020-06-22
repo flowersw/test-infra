@@ -39,6 +39,36 @@ approve:
     require_self_approval: false
 
 plugins:
+  thoth-station/integration-tests:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
+  thoth-station/thoth-application:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
+  thoth-station/metrics-exporter:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
   thoth-station/srcops-testing:
     - assign
     - approve
