@@ -59,6 +59,16 @@ plugins:
     - trigger
     - wip
     - verify-owners
+  thoth-station/mi:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
   thoth-station/metrics-exporter:
     - assign
     - approve
@@ -132,4 +142,7 @@ plugins:
     - size
     - trigger
     - verify-owners
+    - wip
+  AICoE/aicoe-cd:
+    - size
     - wip
