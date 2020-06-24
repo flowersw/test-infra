@@ -20,12 +20,14 @@ tide:
   queries:
     - repos:
         - AICoE/aicoe-ci
+        - thoth-station/common
         - thoth-station/integration-tests
         - thoth-station/metrics-exporter
         - thoth-station/mi
         - thoth-station/si-aggregator
         - thoth-station/si-bandit
         - thoth-station/si-cloc
+        - thoth-station/slo-reporter
         - thoth-station/srcops-testing
         - thoth-station/storages
         - thoth-station/thoth-application
@@ -52,6 +54,10 @@ tide:
         required-contexts:
           - thoth-ci/pre-commit-check
         repos:
+          common:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
           integration-tests:
             required-contexts:
               - thoth-ci/build-check
