@@ -27,6 +27,7 @@ tide:
         - thoth-station/si-bandit
         - thoth-station/si-cloc
         - thoth-station/srcops-testing
+        - thoth-station/storages
         - thoth-station/thoth-application
         - thoth-station/workflow-helpers
       labels:
@@ -72,6 +73,10 @@ tide:
             required-contexts:
               - thoth-ci/build-check
               - thoth-ci/pre-commit-check
+          storages:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
 
 periodics:
   - name: integration-tests-periodic-moc

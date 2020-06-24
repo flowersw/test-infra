@@ -134,6 +134,15 @@ plugins:
     - trigger
     - verify-owners
     - wip
+  thoth-station/storages:
+    - assign
+    - approve
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wip
   AICoE/aicoe-ci:
     - assign
     - approve
