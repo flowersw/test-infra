@@ -134,6 +134,15 @@ plugins:
     - trigger
     - verify-owners
     - wip
+  thoth-station/slo-reporter:
+    - assign
+    - approve
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - verify-owners
+    - wi
   thoth-station/storages:
     - assign
     - approve
