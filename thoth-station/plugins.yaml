@@ -123,6 +123,15 @@ plugins:
     - trigger
     - wip
     - verify-owners
+  thoth-station/datasets:
+    - assign
+    - approve
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
   thoth-station/workflow-helpers:
     - assign
     - approve
