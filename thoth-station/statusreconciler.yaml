@@ -29,7 +29,7 @@ spec:
             - --plugin-config=/etc/plugins/plugins.yaml
             - --config-path=/etc/config/config.yaml
             - --github-token-path=/etc/github/oauth
-          image: gcr.io/k8s-prow/status-reconciler:v20200624-16c251c027
+          image: gcr.io/k8s-prow/status-reconciler:v20200625-3f9f11c88f
           imagePullPolicy: IfNotPresent
           name: statusreconciler
           resources: {}
