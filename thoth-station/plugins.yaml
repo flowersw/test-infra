@@ -10,16 +10,16 @@ external_plugins:
       events:
         - issue_comment
         - pull_request
-  AICoE:
-    - name: needs-rebase
-      events:
-        - issue_comment
-        - pull_request
-  aicoe-aiops:
-    - name: needs-rebase
-      events:
-        - issue_comment
-        - pull_request
+#  AICoE:
+#    - name: needs-rebase
+#      events:
+#        - issue_comment
+#        - pull_request
+#  aicoe-aiops:
+#    - name: needs-rebase
+#      events:
+#        - issue_comment
+#        - pull_request
 
 welcome:
   - repos:
