@@ -22,6 +22,7 @@ tide:
         - AICoE/aicoe-ci
         - AICoE/s2i-custom-notebook
         - thoth-station/common
+        - thoth-station/datasets
         - thoth-station/integration-tests
         - thoth-station/metrics-exporter
         - thoth-station/mi
@@ -67,6 +68,8 @@ tide:
             required-contexts:
               - thoth-ci/pre-commit-check
               - thoth-ci/pytest-check
+          datasets:
+            required-contexts:
           integration-tests:
             required-contexts:
               - thoth-ci/build-check
