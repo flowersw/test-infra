@@ -20,10 +20,12 @@ tide:
   queries:
     - repos:
         - AICoE/aicoe-ci
+        - AICoE/s2i-custom-notebook
         - thoth-station/common
         - thoth-station/integration-tests
         - thoth-station/metrics-exporter
         - thoth-station/mi
+        - thoth-station/report-processing
         - thoth-station/si-aggregator
         - thoth-station/si-bandit
         - thoth-station/si-cloc
@@ -50,6 +52,13 @@ tide:
     from-branch-protection: true
     skip-unknown-contexts: true
     orgs:
+      AICoE:
+        required-contexts:
+          - thoth-ci/pre-commit-check
+        repos:
+          s2i-custom-notebook:
+            required-contexts:
+              - thoth-ci/build-check
       thoth-station:
         required-contexts:
           - thoth-ci/pre-commit-check

@@ -1,0 +1,68 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: needs-rebase
+  name: needs-rebase
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: needs-rebase
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: needs-rebase
+    spec:
+      containers:
+        - args:
+            - --dry-run=false
+            - --github-endpoint=http://ghproxy
+            - --github-endpoint=https://api.github.com
+            - --github-token-path=/etc/github/oauth
+          image: gcr.io/k8s-prow/needs-rebase:v20200624-16c251c027
+          imagePullPolicy: Always
+          name: needs-rebase
+          ports:
+            - containerPort: 8888
+              name: http
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /etc/webhook
+              name: hmac
+              readOnly: true
+            - mountPath: /etc/github
+              name: oauth
+              readOnly: true
+            - mountPath: /etc/plugins
+              name: plugins
+              readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 180
+      volumes:
+        - name: hmac
+          secret:
+            defaultMode: 420
+            secretName: hmac-token
+        - name: oauth
+          secret:
+            defaultMode: 420
+            secretName: oauth-token
+        - configMap:
+            defaultMode: 420
+            name: plugins
+          name: plugins

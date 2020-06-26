@@ -10,7 +10,12 @@ external_plugins:
       events:
         - issue_comment
         - pull_request
-  AICoE/aicoe-ci:
+  AICoE:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  aicoe-aiops:
     - name: needs-rebase
       events:
         - issue_comment
@@ -39,6 +44,26 @@ approve:
     require_self_approval: false
 
 plugins:
+  AICoE/s2i-custom-notebook:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
+  thoth-station/report-processing:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
   thoth-station/integration-tests:
     - assign
     - approve
@@ -142,7 +167,7 @@ plugins:
     - size
     - trigger
     - verify-owners
-    - wi
+    - wip
   thoth-station/storages:
     - assign
     - approve
