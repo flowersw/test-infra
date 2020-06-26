@@ -34,6 +34,7 @@ tide:
         - thoth-station/srcops-testing
         - thoth-station/storages
         - thoth-station/thoth-application
+        - thoth-station/unresolved-package-handler
         - thoth-station/workflow-helpers
       labels:
         - approved
@@ -60,6 +61,7 @@ tide:
           s2i-custom-notebook:
             required-contexts:
               - thoth-ci/build-check
+              - thoth-ci/pre-commit-check
       thoth-station:
         required-contexts:
           - thoth-ci/pre-commit-check
