@@ -1,0 +1,34 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: hello-world
+spec:
+  resources:
+    inputs:
+      - name: workspace
+        type: git
+  steps:
+    - name: say-hello
+      image: busybox
+      command: ["echo"]
+      args: ["hi, ", "Thoth!"]
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: try-out-pipeline
+spec:
+  workspaces:
+    - name: workspace
+  resources:
+    - name: git
+      type: git
+  tasks:
+    - name: hello
+      taskRef:
+        name: hello-world
+      resources:
+        inputs:
+          - name: workspace
+            resource: git
