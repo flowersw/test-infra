@@ -37,12 +37,21 @@ lgtm:
 approve:
   - repos:
       - thoth-station
+    require_self_approval: true
     ignore_review_state: false
-    require_self_approval: false
-    lgtm_acts_as_approve: true
 
 plugins:
   AICoE/s2i-custom-notebook:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
+  thoth-station/buildlog-parser:
     - assign
     - approve
     - blunderbuss
