@@ -11,9 +11,27 @@ plank:
         path_strategy: explicit
       gcs_credentials_secret: gcs-credentials
 
+branch-protection:
+  protect: true
+  required_status_checks:
+    contexts: ["thoth-ci/pre-commit"]
+  orgs:
+    AICoE:
+      protect: false
+    aicoe-aiops:
+      protect: false
+    thoth-station:
+      allow_force_pushes: true
+      required_pull_request_reviews:
+        dismiss_stale_reviews: false
+        required_approving_review_count:
+      restrictions:
+        teams:
+        - sourceops 
+
 tide:
   merge_method:
-    thoth-station/srcops-testing: squash
+    thoth-station/srcops-testing: squash 
 
   target_url: https://prow.thoth-station.dev/tide
 
