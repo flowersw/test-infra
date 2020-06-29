@@ -35,13 +35,11 @@ lgtm:
       - thoth-station
 
 approve:
-  - ignore_review_state: false
-    implicit_self_approve: false
-
-    repos:
+  - repos:
       - thoth-station
-
+    ignore_review_state: false
     require_self_approval: false
+    lgtm_acts_as_approve: true
 
 plugins:
   AICoE/s2i-custom-notebook:
@@ -55,6 +53,16 @@ plugins:
     - wip
     - verify-owners
   thoth-station/report-processing:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
+  thoth-station/init-job:
     - assign
     - approve
     - blunderbuss
@@ -85,6 +93,16 @@ plugins:
     - wip
     - verify-owners
   thoth-station/mi:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
+  thoth-station/management-api:
     - assign
     - approve
     - blunderbuss

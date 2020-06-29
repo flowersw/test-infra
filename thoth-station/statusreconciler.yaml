@@ -28,8 +28,10 @@ spec:
             - --continue-on-error=true
             - --plugin-config=/etc/plugins/plugins.yaml
             - --config-path=/etc/config/config.yaml
+            - --github-endpoint=http://ghproxy
+            - --github-endpoint=https://api.github.com
             - --github-token-path=/etc/github/oauth
-          image: gcr.io/k8s-prow/status-reconciler:v20200625-3f9f11c88f
+          image: gcr.io/k8s-prow/status-reconciler:v20200625-dd6a466605
           imagePullPolicy: IfNotPresent
           name: statusreconciler
           resources: {}
