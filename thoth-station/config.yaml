@@ -19,9 +19,6 @@ branch-protection:
     aicoe-aiops:
       protect: false
     thoth-station:
-      required_status_checks:
-        contexts:
-          - local/check
       restrictions:
         teams:
           - sourceops 
@@ -40,6 +37,7 @@ tide:
     - repos:
         - AICoE/aicoe-ci
         - AICoE/s2i-custom-notebook
+        - thoth-station/buildlog-parser
         - thoth-station/common
         - thoth-station/datasets
         - thoth-station/init-job
@@ -87,12 +85,16 @@ tide:
         required-contexts:
           - thoth-ci/pre-commit-check
         repos:
+          buildlog-parser:
+            required-contexts:
+              - thoth-ci/build-check
           common:
             required-contexts:
               - thoth-ci/pre-commit-check
               - thoth-ci/pytest-check
           datasets:
             required-contexts:
+              - thoth-ci/build-check
           init-job:
             required-contexts:
               - thoth-ci/pre-commit-check

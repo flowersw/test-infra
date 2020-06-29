@@ -26,6 +26,9 @@ spec:
         - args:
             - --dry-run=false
             - --config-path=/etc/config/config.yaml
+            - --github-endpoint=http://ghproxy
+            - --github-endpoint=https://api.github.com
+            - --github-token-path=/etc/github/oauth
           image: gcr.io/k8s-prow/hook:v20200625-dd6a466605
           imagePullPolicy: Always
           livenessProbe:
