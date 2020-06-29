@@ -28,9 +28,15 @@ spec:
             - --plugin-config=/etc/plugins/plugins.yaml
             - --tide-url=http://tide/
             - --hook-url=http://hook:8888/plugin-help
-            - --github-token-path=/etc/github/oauth
+            - --oauth-url=/github-login
             - --plugin-config=/etc/plugins/plugins.yaml
-          image: gcr.io/k8s-prow/deck:v20200625-3f9f11c88f
+            - --github-token-path=/etc/github/oauth
+            - --github-endpoint=http://ghproxy
+            - --github-endpoint=https://api.github.com
+            - --github-oauth-config-file=/etc/githuboauth/secret
+            - --cookie-secret=/etc/cookie/secret
+            - --spyglass=false
+          image: gcr.io/k8s-prow/deck:v20200625-dd6a466605
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3

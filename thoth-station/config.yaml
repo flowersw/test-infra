@@ -13,23 +13,24 @@ plank:
 
 branch-protection:
   protect: true
-  required_status_checks:
-    contexts: ["thoth-ci/pre-commit"]
   orgs:
     AICoE:
       protect: false
     aicoe-aiops:
       protect: false
     thoth-station:
-      allow_force_pushes: true
-      required_pull_request_reviews:
-        dismiss_stale_reviews: false
-        required_approving_review_count:
+      required_status_checks:
+        contexts:
+          - local/check
       restrictions:
         teams:
-        - sourceops 
+          - sourceops 
+      allow_force_pushes: true
 
 tide:
+  pr_status_base_urls:
+    '*': https://prow.thoth-station.dev/pr
+
   merge_method:
     thoth-station/srcops-testing: squash 
 
@@ -41,7 +42,9 @@ tide:
         - AICoE/s2i-custom-notebook
         - thoth-station/common
         - thoth-station/datasets
+        - thoth-station/init-job
         - thoth-station/integration-tests
+        - thoth-station/management-api
         - thoth-station/metrics-exporter
         - thoth-station/mi
         - thoth-station/report-processing
@@ -90,11 +93,19 @@ tide:
               - thoth-ci/pytest-check
           datasets:
             required-contexts:
+          init-job:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
           integration-tests:
             required-contexts:
               - thoth-ci/build-check
               - thoth-ci/pre-commit-check
               - thoth-ci/pytest-check
+          management-api:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/build-check
           srcops-testing:
             required-contexts:
               - thoth-ci/pre-commit-check
@@ -114,6 +125,9 @@ tide:
           storages:
             required-contexts:
               - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          unresolved-package-handler:
+            required-contexts:
               - thoth-ci/build-check
 
 presubmits:
