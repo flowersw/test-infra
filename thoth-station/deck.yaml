@@ -36,7 +36,7 @@ spec:
             - --github-oauth-config-file=/etc/githuboauth/secret
             - --cookie-secret=/etc/cookie/secret
             - --spyglass=false
-          image: gcr.io/k8s-prow/deck:v20200625-dd6a466605
+          image: gcr.io/k8s-prow/deck:v20200628-cc1c099dad
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 3
