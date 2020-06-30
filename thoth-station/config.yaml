@@ -137,6 +137,9 @@ tide:
             required-contexts:
               - thoth-ci/pre-commit-check
               - thoth-ci/pytest-check
+          s2i:
+            required-contexts:
+              - thoth-ci/pytest-check
           si-bandit:
             required-contexts:
               - thoth-ci/build-check
