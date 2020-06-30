@@ -77,6 +77,10 @@ tide:
               - thoth-ci/pre-commit-check
       thoth-station:
         repos:
+          adviser:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
           amun-api:
             required-contexts:
               - thoth-ci/pre-commit-check
@@ -85,10 +89,6 @@ tide:
           amun-client:
             required-contexts:
               - thoth-ci/pytest-check
-          adviser:
-            required-contexts:
-              - thoth-ci/pytest-check
-              - thoth-ci/build-check
           buildlog-parser:
             required-contexts:
               - thoth-ci/pytest-check
@@ -106,9 +106,14 @@ tide:
               - thoth-ci/build-check
           integration-tests:
             required-contexts:
-              - thoth-ci/build-check
               - thoth-ci/pre-commit-check
               - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          kebechet:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
           management-api:
             required-contexts:
               - thoth-ci/pre-commit-check
@@ -116,6 +121,13 @@ tide:
           user-api:
             required-contexts:
               - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          package-analyzer:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+          python:
+            required-contexts:
               - thoth-ci/pytest-check
               - thoth-ci/build-check
           srcops-testing:
@@ -134,6 +146,12 @@ tide:
             required-contexts:
               - thoth-ci/build-check
               - thoth-ci/pre-commit-check
+          solver:
+            required-contexts:
+              - thoth-ci/pre-commit-check
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
+          unresolved-package-handler:
           storages:
             required-contexts:
               - thoth-ci/pytest-check
