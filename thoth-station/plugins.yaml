@@ -37,10 +37,32 @@ lgtm:
 approve:
   - repos:
       - thoth-station
+      - AICoE/aicoe-ci
+      - AICoE/s2i-custom-notebook
     require_self_approval: true
     ignore_review_state: false
 
 plugins:
+  thoth-station:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
+  AICoE/aicoe-ci:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
   AICoE/s2i-custom-notebook:
     - assign
     - approve
@@ -51,186 +73,3 @@ plugins:
     - trigger
     - wip
     - verify-owners
-  thoth-station/buildlog-parser:
-    - assign
-    - approve
-    - blunderbuss
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/report-processing:
-    - assign
-    - approve
-    - blunderbuss
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/init-job:
-    - assign
-    - approve
-    - blunderbuss
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/integration-tests:
-    - assign
-    - approve
-    - blunderbuss
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/thoth-application:
-    - assign
-    - approve
-    - blunderbuss
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/mi:
-    - assign
-    - approve
-    - blunderbuss
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/management-api:
-    - assign
-    - approve
-    - blunderbuss
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/metrics-exporter:
-    - assign
-    - approve
-    - blunderbuss
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/srcops-testing:
-    - assign
-    - approve
-    - blunderbuss
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/common:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/datasets:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - wip
-    - verify-owners
-  thoth-station/workflow-helpers:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  thoth-station/si-aggregator:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  thoth-station/si-cloc:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  thoth-station/si-bandit:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  thoth-station/slo-reporter:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  thoth-station/storages:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  thoth-station/unresolved-package-handler:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  AICoE/aicoe-ci:
-    - assign
-    - approve
-    - hold
-    - lifecycle
-    - size
-    - trigger
-    - verify-owners
-    - wip
-  AICoE/aicoe-cd:
-    - size
-    - wip

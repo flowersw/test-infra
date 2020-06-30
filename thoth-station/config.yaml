@@ -12,13 +12,12 @@ plank:
       gcs_credentials_secret: gcs-credentials
 
 branch-protection:
-  protect: true
+  allow_disabled_policies: true
   orgs:
     AICoE:
       protect: false
-    aicoe-aiops:
-      protect: false
     thoth-station:
+      protect: true
       restrictions:
         users: []
         teams:
@@ -30,13 +29,15 @@ tide:
     '*': https://prow.thoth-station.dev/pr
 
   merge_method:
-    thoth-station/srcops-testing: squash 
-
-  target_url: https://prow.thoth-station.dev/tide
+    AICoE: squash 
+    thoth-station: squash 
 
   queries:
     - orgs:
         - thoth-station
+      excludedRepos:
+        - thoth-station/dgraph-thoth-config
+        - thoth-station/workload-operator
       labels:
         - approved
       missingLabels:
@@ -75,8 +76,6 @@ tide:
               - thoth-ci/build-check
               - thoth-ci/pre-commit-check
       thoth-station:
-        required-contexts:
-          - thoth-ci/pre-commit-check
         repos:
           adviser:
             required-contexts:
@@ -84,6 +83,7 @@ tide:
               - thoth-ci/build-check
           buildlog-parser:
             required-contexts:
+              - thoth-ci/pytest-check
               - thoth-ci/build-check
           common:
             required-contexts:

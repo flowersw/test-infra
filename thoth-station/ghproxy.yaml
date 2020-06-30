@@ -5,7 +5,7 @@ metadata:
   namespace: default
   labels:
     app: ghproxy
-  name: ghproxy-1
+  name: ghproxy
 spec:
   accessModes:
     - ReadWriteOnce
@@ -36,6 +36,7 @@ spec:
           args:
             - --cache-dir=/cache
             - --cache-sizeGB=9
+            - --legacy-disable-disk-cache-partitions-by-auth-header=false
           ports:
             - containerPort: 8888
           volumeMounts:
@@ -44,7 +45,7 @@ spec:
       volumes:
         - name: cache
           persistentVolumeClaim:
-            claimName: ghproxy-1
+            claimName: ghproxy
 ---
 apiVersion: v1
 kind: Service
