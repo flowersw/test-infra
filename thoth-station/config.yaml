@@ -117,7 +117,6 @@ tide:
           source-management:
             required-contexts:
               - thoth-ci/pre-commit-check
-              - thoth-ci/build-check
           management-api:
             required-contexts:
               - thoth-ci/pre-commit-check
