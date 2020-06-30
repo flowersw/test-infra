@@ -20,9 +20,10 @@ branch-protection:
       protect: false
     thoth-station:
       restrictions:
+        users: []
         teams:
           - sourceops 
-      allow_force_pushes: true
+      allow_force_pushes: false 
 
 tide:
   pr_status_base_urls:
@@ -34,27 +35,19 @@ tide:
   target_url: https://prow.thoth-station.dev/tide
 
   queries:
+    - orgs:
+        - thoth-station
+      labels:
+        - approved
+      missingLabels:
+        - do-not-merge
+        - do-not-merge/hold
+        - do-not-merge/invalid-owners-file
+        - do-not-merge/work-in-progress
+        - needs-rebase
     - repos:
         - AICoE/aicoe-ci
         - AICoE/s2i-custom-notebook
-        - thoth-station/buildlog-parser
-        - thoth-station/common
-        - thoth-station/datasets
-        - thoth-station/init-job
-        - thoth-station/integration-tests
-        - thoth-station/management-api
-        - thoth-station/metrics-exporter
-        - thoth-station/mi
-        - thoth-station/report-processing
-        - thoth-station/si-aggregator
-        - thoth-station/si-bandit
-        - thoth-station/si-cloc
-        - thoth-station/slo-reporter
-        - thoth-station/srcops-testing
-        - thoth-station/storages
-        - thoth-station/thoth-application
-        - thoth-station/unresolved-package-handler
-        - thoth-station/workflow-helpers
       labels:
         - approved
       missingLabels:
@@ -85,6 +78,10 @@ tide:
         required-contexts:
           - thoth-ci/pre-commit-check
         repos:
+          adviser:
+            required-contexts:
+              - thoth-ci/pytest-check
+              - thoth-ci/build-check
           buildlog-parser:
             required-contexts:
               - thoth-ci/build-check
