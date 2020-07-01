@@ -15,12 +15,57 @@ branch-protection:
   allow_disabled_policies: true
   orgs:
     thoth-station:
+      exclude:
+        - "^revert-"
+        - "^kebechet-"
+        - "^dependabot/"
       protect: true
       restrictions:
         users: []
         teams:
           - sourceops 
       allow_force_pushes: false 
+      repos:
+        test-infra:
+          allow_force_pushes: true
+        tensorflow:
+          protect: false
+        contra-env-infra:
+          protect: false
+        ansible-role-core-imagestreams:
+          protect: false
+        ansible-role-core-templates:
+          protect: false
+        ansible-role-core-cronjob:
+          protect: false
+        ansible-role-metrics-exporter:
+          protect: false
+        ansible-role-core-templates:
+          protect: false
+        ansible-role-cronjob:
+          protect: false
+        ansible-role-argo-workflows:
+          protect: false
+        ansible-role-postgresql:
+          protect: false
+        ansible-role-kebechet:
+          protect: false
+        statusfy:
+          protect: false
+        statusfy-ops:
+          protect: false
+        website-tooling:
+          protect: false
+        cuda:
+          protect: false
+        stub-api:
+          protect: false
+        nvidia-usage-dashboard:
+          protect: false
+        template-project:
+          protect: false
+        pipelines-catalog:
+          protect: false
 
 tide:
   pr_status_base_urls:
