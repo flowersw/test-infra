@@ -14,8 +14,6 @@ plank:
 branch-protection:
   allow_disabled_policies: true
   orgs:
-    AICoE:
-      protect: false
     thoth-station:
       protect: true
       restrictions:
@@ -47,7 +45,9 @@ tide:
         - do-not-merge/work-in-progress
         - needs-rebase
     - repos:
+        - AICoE/aicoe-cd
         - AICoE/aicoe-ci
+        - AICoE/aicoe-sre
         - AICoE/s2i-custom-notebook
       labels:
         - approved
@@ -68,12 +68,13 @@ tide:
     skip-unknown-contexts: true
     orgs:
       AICoE:
-        required-contexts:
-          - thoth-ci/pre-commit-check
         repos:
           s2i-custom-notebook:
             required-contexts:
+              - thoth-ci/pre-commit-check
               - thoth-ci/build-check
+          aicoe-cd:
+            required-contexts:
               - thoth-ci/pre-commit-check
       thoth-station:
         repos:

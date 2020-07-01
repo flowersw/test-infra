@@ -10,16 +10,26 @@ external_plugins:
       events:
         - issue_comment
         - pull_request
-#  AICoE:
-#    - name: needs-rebase
-#      events:
-#        - issue_comment
-#        - pull_request
-#  aicoe-aiops:
-#    - name: needs-rebase
-#      events:
-#        - issue_comment
-#        - pull_request
+  AICoE/aicoe-cd:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/aicoe-ci:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/aicoe-sre:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
+  AICoE/s2i-custom-notebook:
+    - name: needs-rebase
+      events:
+        - issue_comment
+        - pull_request
 
 welcome:
   - repos:
@@ -37,7 +47,9 @@ lgtm:
 approve:
   - repos:
       - thoth-station
+      - AICoE/aicoe-cd
       - AICoE/aicoe-ci
+      - AICoE/aicoe-sre
       - AICoE/s2i-custom-notebook
     require_self_approval: true
     ignore_review_state: false
@@ -53,7 +65,27 @@ plugins:
     - trigger
     - wip
     - verify-owners
+  AICoE/aicoe-cd:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
   AICoE/aicoe-ci:
+    - assign
+    - approve
+    - blunderbuss
+    - hold
+    - lifecycle
+    - size
+    - trigger
+    - wip
+    - verify-owners
+  AICoE/aicoe-sre:
     - assign
     - approve
     - blunderbuss
